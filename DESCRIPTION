@@ -35,8 +35,8 @@ Suggests:
     tidyverse
 Config/testthat/edition: 3
 Imports: 
-    SeuratObject,
-    Seurat,
+    SeuratObject (>= 5.0.0),
+    Seurat (>= 5.0.0),
     SOAR,
     data.table,
     ggsci,

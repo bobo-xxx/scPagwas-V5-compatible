@@ -83,7 +83,7 @@ plot_vln_Corgenes <- function(seurat_obj,
     sort = F,
     # group.by = var_group,
     same.y.lims = F,
-    slot = slot,
+    layer = slot,
     log = F,
     combine = F,
     flip = F

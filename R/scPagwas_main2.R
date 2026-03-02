@@ -194,12 +194,12 @@ scPagwas_main2 <- function(Pagwas = NULL,
     Pagwas <- list()
     Pagwas <- Single_data@misc
     if ("scPagwasPaPca" %in% Seurat::Assays(Single_data)) {
-      Pagwas$pca_scCell_mat <- GetAssayData(Single_data,
-                                            assay = "scPagwasPaPca"
+      Pagwas$pca_scCell_mat <- SeuratObject::LayerData(Single_data,
+                                            assay = "scPagwasPaPca", layer = "data"
       )
     }
     if (assay %in% Seurat::Assays(Single_data)) {
-      Pagwas$data_mat <- Seurat::GetAssayData(Single_data, assay = assay)
+      Pagwas$data_mat <- SeuratObject::LayerData(Single_data, assay = assay, layer = "data")
     } else {
       stop("Error:assay is not in Pagwas!")
     }
