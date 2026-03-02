@@ -36,10 +36,10 @@ scPagwas_main(
 \item{gwas_data}{(data.frame)GWAS summary data; It must have some
 colmuns such as:
 chrom|    pos    |   rsid    |   se  |  beta |  maf
-6 | 119968580 | rs1159767 | 0.032 | 0.019 |0.5275
-10 | 130566523 |  rs559109 | 0.033 | 0.045 |0.4047
-5 | 133328825 | rs6893145 | 0.048 | 0.144 |0.1222
-7 | 146652932 | rs13228798| 0.035 | 0.003 | 0.3211}
+   6 | 119968580 | rs1159767 | 0.032 | 0.019 |0.5275
+  10 | 130566523 |  rs559109 | 0.033 | 0.045 |0.4047
+   5 | 133328825 | rs6893145 | 0.048 | 0.144 |0.1222
+   7 | 146652932 | rs13228798| 0.035 | 0.003 | 0.3211}
 
 \item{output.prefix}{= "Test": This parameter sets the prefix for the output result files.}
 
@@ -96,65 +96,31 @@ if not,will return a list result;}
 scPagwas score.}
 }
 \value{
-Returns a seurat data with entries(seurat_return=T):
+When \code{seurat_return = TRUE}, returns a Seurat object with:
 \describe{
-\item{assay:}{
-{scPagwasPaPca:}{An assay for S4 type of data; the svd result
-for pathways in each cells;}
-{scPagwasPaHeritability:}{An assay for S4 type of data; the
-gPas matrix for pathways in each cells;}}
-\item{meta.data}{
-{scPagwas.TRS.Score1:}{ the column for "meta.data";Enrichment socre
-for inheritance associated top genes.}
-{scPagwas.gPAS.score:}{ the column for "meta.data";Inheritance
-regression effects for each cells}
-{Random_Correct_BG_p}{: CellpValue for each cells;}
-{Random_Correct_BG_adjp}{: fdr for each cells, adjust p value.}
-{Random_Correct_BG_z}{: z score for eahc cells.}
-\item{misc: element in result,\code{Pagwas@misc }}{
-{Pathway_list:}{a list for pathway gene list intersecting with single
-cell data}
-{pca_cell_df:}{ a data frame for pathway pca result for each celltype.}
-{lm_results:}{ the regression result for each cell.}
-{PCC:}{
-heritability correlation value for each gene;In the previous version, we referred to it as Pearson correlation coefficients.}
-{bootstrap_results:}{The bootstrap data frame results for celltypes
-including bootstrap pvalue and confidence interval.}
+  \item{scPagwasPaPca}{Assay containing pathway PCA results for each cell}
+  \item{scPagwasPaHeritability}{Assay containing gPAS matrix for pathways}
+  \item{meta.data}{Contains scPagwas.TRS.Score1, scPagwas.gPAS.score,
+    Random_Correct_BG_p, Random_Correct_BG_adjp, Random_Correct_BG_z}
 }
 
-}
-Returns files:
-
+When \code{seurat_return = FALSE}, returns a list containing:
 \describe{
-{scPagwas.run.log:}{ the running log file for scPagwas}
-{\emph{_parameters.txt:}{parameters log file for scPagwas}
-{}_singlecell_scPagwas_score.Result.csv:}{ The final result for
-lm and top gene score}
-{\emph{_celltypes_bootstrap_results.csv:}{The bootstrap data frame
-results for celltypes including bootstrap pvalue and confidence
-interval}
-{}_gene_PCC.csv:}{ heritability correlation
-value("cor" for pearson) for each gene;}
+  \item{scPagwasPaPca}{SVD result for pathways in each cell}
+  \item{Pathway_list}{Pathway gene list intersecting with single cell data}
+  \item{pca_cell_df}{Pathway PCA result for each celltype}
+  \item{lm_results}{Regression result for each cell}
+  \item{PCC}{Heritability correlation value for each gene}
+  \item{bootstrap_results}{Bootstrap results for celltypes}
 }
 
-Returns a list class with entries(seurat_return=F):
-\describe{
-{scPagwasPaPca:}{Assays for S4 type of data; the svd result for
-pathways in each cells;}
-{scPagwas.topgenes.Score1:}{ the column for "meta.data";
-Enrichment socre for inheritance associated top genes.}
-{sclm_score:}{ the column for "meta.data";Inheritance regression
-effects for each cells}
-{Pathway_list:}{ The number of Lanczos iterations carried out}
-{pca_cell_df:}{ The total number of matrix vector products carried out}
-{sclm_results:}{ The total number of matrix vector products carried out}
-{PCC:}{ The total number of
-matrix vector products carried out;In the previous version, we referred to it as Pearson correlation coefficients}
-{Pathway_ctlm_results:}{ The total number of matrix vector products
-carried out}
-{lm_results:}{ The total number of matrix vector products carried out}
-{Pathway_ct_results:}{ The total number of matrix vector products
-carried out}
+Output files include:
+\itemize{
+  \item scPagwas.run.log - Running log file
+  \item *_parameters.txt - Parameters log file
+  \item *_singlecell_scPagwas_score.Result.csv - Final results
+  \item *_celltypes_bootstrap_results.csv - Bootstrap results
+  \item *_gene_PCC.csv - Gene heritability correlation
 }
 }
 \description{
@@ -209,8 +175,5 @@ through pathway activity transformed single-cell RNA sequencing data.(2022)
 \author{
 Chunyu Deng
 }
-\keyword{functions.}
-\keyword{of}
 \keyword{scPagwas}
-\keyword{scPagwas_main,}
 \keyword{wrapper}
