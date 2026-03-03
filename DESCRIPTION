@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "dengcyelena@gmail.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: scPagwas, a polygenic principal component-scoring method that links scRNA-seq data with large-scale GWAS summary statistics to prioritize genetics-modulated cells associated with complex diseases.scPagwas is able to prioritize disease-associated individual cells by integrating the scRNA-seq data with polygenic signals from GWAS.
+Description: scPagwas, a polygenic principal component-scoring method that links scRNA-seq data with large-scale GWAS summary statistics to prioritize genetics-modulated cells associated with complex diseases. scPagwas is able to prioritize disease-associated individual cells by integrating the scRNA-seq data with polygenic signals from GWAS. This version (2.0.0+) is fully compatible with Seurat 5.x.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -35,8 +35,8 @@ Suggests:
     tidyverse
 Config/testthat/edition: 3
 Imports: 
-    SeuratObject,
-    Seurat,
+    SeuratObject (>= 5.0.0),
+    Seurat (>= 5.0.0),
     SOAR,
     data.table,
     ggsci,
