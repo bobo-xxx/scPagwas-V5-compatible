@@ -356,8 +356,8 @@ scPagwas_main <- function(Pagwas = NULL,
       stop("Error:There is need a filename and address for gwas_data")
     }
 
-    if (maf_filter >= 1 & maf_filter < 0) {
-      stop("Error:maf_filter should between 0 and 1")
+    if (maf_filter >= 1 | maf_filter < 0) {
+      stop("Error:maf_filter should be between 0 and 1")
     }
 
     tt <- Sys.time()
