@@ -1,2 +1,12 @@
-.Rproj.user
 _gsdata
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
