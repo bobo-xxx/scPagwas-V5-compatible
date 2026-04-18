@@ -27,8 +27,7 @@ Code for reproducing the analysis from the paper is available
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8137370.svg)](https://doi.org/10.5281/zenodo.8137370)
 
 For further usage on the scPagwas package, you can visit the
-[website](https://dengchunyu.github.io/about/). A vignette for using
-also can be accessed using browseVignettes(“scPagwas”)
+A vignette for usage can also be accessed using browseVignettes("scPagwas")
 
 ## Installation
 
