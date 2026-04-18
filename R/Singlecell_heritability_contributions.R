@@ -236,7 +236,7 @@ scPagwas_score_filter <- function(scPagwas_score) {
     if (length(finite_vals) > 0) {
       scPagwas_score[which(scPagwas_score == Inf)] <- max(finite_vals)
     } else {
-      scPagwas_score[which(scPagwas_score == Inf)] <- .Machine$double.xmax
+      scPagwas_score[which(scPagwas_score == Inf)] <- NA
     }
   }
   if (-Inf %in% scPagwas_score) {
@@ -244,7 +244,7 @@ scPagwas_score_filter <- function(scPagwas_score) {
     if (length(finite_vals) > 0) {
       scPagwas_score[which(scPagwas_score == -Inf)] <- min(finite_vals)
     } else {
-      scPagwas_score[which(scPagwas_score == -Inf)] <- -.Machine$double.xmax
+      scPagwas_score[which(scPagwas_score == -Inf)] <- NA
     }
   }
   lower_bound <- stats::quantile(scPagwas_score, 0.01, na.rm = TRUE)
