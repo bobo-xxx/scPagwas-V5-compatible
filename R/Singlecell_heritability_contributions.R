@@ -232,12 +232,20 @@ scPagwas_score_filter <- function(scPagwas_score) {
   }
   # remove the inf values!
   if (Inf %in% scPagwas_score) {
-    scPagwas_score[which(scPagwas_score == Inf)] <-
-      max(scPagwas_score[-which(scPagwas_score == Inf)], na.rm = TRUE)
+    finite_vals <- scPagwas_score[is.finite(scPagwas_score)]
+    if (length(finite_vals) > 0) {
+      scPagwas_score[which(scPagwas_score == Inf)] <- max(finite_vals)
+    } else {
+      scPagwas_score[which(scPagwas_score == Inf)] <- NA
+    }
   }
   if (-Inf %in% scPagwas_score) {
-    scPagwas_score[which(scPagwas_score == -Inf)] <-
-      min(scPagwas_score[-which(scPagwas_score == -Inf)], na.rm = TRUE)
+    finite_vals <- scPagwas_score[is.finite(scPagwas_score)]
+    if (length(finite_vals) > 0) {
+      scPagwas_score[which(scPagwas_score == -Inf)] <- min(finite_vals)
+    } else {
+      scPagwas_score[which(scPagwas_score == -Inf)] <- NA
+    }
   }
   lower_bound <- stats::quantile(scPagwas_score, 0.01, na.rm = TRUE)
   upper_bound <- stats::quantile(scPagwas_score, 0.99, na.rm = TRUE)

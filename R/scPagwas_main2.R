@@ -294,8 +294,8 @@ scPagwas_main2 <- function(Pagwas = NULL,
       stop("Error:There is need a filename and address for gwas_data")
     }
 
-    if (maf_filter >= 1 & maf_filter < 0) {
-      stop("Error:maf_filter should between 0 and 1")
+    if (maf_filter > 1 | maf_filter < 0) {
+      stop("Error:maf_filter should be between 0 and 1")
     }
 
     tt <- Sys.time()
@@ -445,7 +445,7 @@ scPagwas_main2 <- function(Pagwas = NULL,
     )] <- NULL
 
 
-    Single_data <- Seurat::AddModuleScore(Single_data, assay = assay, scPagwas_topgenes, name ="scPagwas.TRS.Score")
+    Single_data <- Seurat::AddModuleScore(Single_data, assay = assay, features = list(scPagwas_topgenes), name = "scPagwas.TRS.Score")
 
     message("* Get Random Correct background pvalue for each single cell!")
     if(iters_singlecell>0){
