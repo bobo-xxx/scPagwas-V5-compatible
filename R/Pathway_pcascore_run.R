@@ -148,7 +148,8 @@ Pathway_pcascore_run <- function(Pagwas = NULL,
   })
   pca_df <- Reduce(function(dtf1, dtf2) rbind(dtf1, dtf2), pca_df)
   pca_scoremat <- reshape2::dcast(
-    pca_df[, c("name", "celltype", "score")], name ~ celltype
+    pca_df[, c("name", "celltype", "score")], name ~ celltype,
+    value.var = "score"
   )
   rm(pca_df)
 

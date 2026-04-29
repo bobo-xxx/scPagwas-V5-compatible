@@ -226,7 +226,7 @@ scPagwas_main2 <- function(Pagwas = NULL,
     stop("Error:Pathway_list should be input!")
   }
 
-  if(!("data_mat" %in% names(Pagwas))){
+  if(!("data_mat" %in% names(Pagwas)) || !("Celltype_anno" %in% names(Pagwas))){
     message("** Start to filter single cell data!")
     Pagwas <- Single_data_input(
       Pagwas = Pagwas,
@@ -518,7 +518,7 @@ scPagwas_main2 <- function(Pagwas = NULL,
           assay = "scPagwasPaHeritability",
           logfc.threshold = 0,
           test.use = "wilcox",
-          slot = "data")
+          layer = "data")
       PaHeritability_marker <- PaHeritability_marker[PaHeritability_marker$avg_log2FC>0,]
 
       rm(scPagwas_pathway)

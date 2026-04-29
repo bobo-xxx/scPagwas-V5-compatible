@@ -6,8 +6,8 @@
 #'
 #' @importFrom dplyr mutate filter inner_join %>%
 #' @importFrom irlba irlba
-#' @importFrom Seurat Assays FindVariableFeatures AverageExpression VariableFeatures GetAssayData RunPCA RunTSNE RunUMAP Embeddings CreateAssayObject DefaultAssay AddModuleScore VlnPlot
-#' @importFrom SeuratObject Idents DefaultAssay GetAssayData SetAssayData
+#' @importFrom Seurat Assays FindVariableFeatures AverageExpression VariableFeatures RunPCA RunTSNE RunUMAP Embeddings CreateAssayObject DefaultAssay AddModuleScore VlnPlot
+#' @importFrom SeuratObject Idents DefaultAssay LayerData SetAssayData
 #' @importFrom Matrix Matrix colSums rowSums crossprod
 #' @importFrom glmnet cv.glmnet
 #' @importFrom GenomicRanges GRanges resize resize
@@ -288,7 +288,7 @@ scPagwas_main <- function(Pagwas = NULL,
     stop("Error:Pathway_list should be input!")
   }
 
-  if(!("data_mat" %in% names(Pagwas))){
+  if(!("data_mat" %in% names(Pagwas)) || !("Celltype_anno" %in% names(Pagwas))){
     message("** Start to filter single cell data!")
     Pagwas <- Single_data_input(
       Pagwas = Pagwas,
