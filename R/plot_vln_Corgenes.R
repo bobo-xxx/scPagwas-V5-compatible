@@ -8,7 +8,7 @@
 #' @param seurat_obj Seurat object (Seurat ^3.0)
 #' @param assay  seurat_obj assay to use
 #' @param var_group  the group variable, character
-#' @param slot  seurat_obj slot to use
+#' @param layer  seurat_obj layer to use
 #' @param vec_features  a vector of features to plot in the violin plot
 #' @param vec_group_colors  a vector of colors, named by corresponding group. Length must match number of groups. Character
 #' @param f_color  if vec_group_colors is not provided, the user may instead provide a function f_color() that takes as its only argument the number of colors to generate
@@ -36,14 +36,14 @@
 #' )[1:5]]
 #' plot_vln_Corgenes(
 #'   seurat_obj = Pagwas_data,
-#'   assay = "RNA", slot = "data",
+#'   assay = "RNA", layer = "data",
 #'   var_group = "anno",
 #'   vec_features = top5genes,
 #'   do_plot = TRUE
 #' )
 plot_vln_Corgenes <- function(seurat_obj,
                               assay,
-                              slot,
+                              layer,
                               var_group,
                               vec_features,
                               vec_group_colors = NULL,
@@ -83,7 +83,7 @@ plot_vln_Corgenes <- function(seurat_obj,
     sort = F,
     # group.by = var_group,
     same.y.lims = F,
-    layer = slot,
+    layer = layer,
     log = F,
     combine = F,
     flip = F

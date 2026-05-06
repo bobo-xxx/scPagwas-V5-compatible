@@ -77,11 +77,11 @@ plot_scpathway_dot <- function(Pagwas,
   # height = 7
   paras_sum_mean <- NULL
   ############### proportion
+  scPagwasPaHeritability <- t(SeuratObject::LayerData(Pagwas,
+                                           assay = "scPagwasPaHeritability", layer = "data"))
   proportion_list <- tapply(
     as.vector(Idents(Pagwas)),
     Idents(Pagwas), function(x) {
-      scPagwasPaHeritability <- t(SeuratObject::LayerData(Pagwas,
-                                               assay = "scPagwasPaHeritability", layer = "data"))
       a <- apply(scPagwasPaHeritability, 2,
                  function(y) sum(y > 0) / length(y))
       return(unlist(a))
